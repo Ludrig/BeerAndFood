@@ -24,7 +24,7 @@ namespace BeerAndFood
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //comment
         }
     }
 }
