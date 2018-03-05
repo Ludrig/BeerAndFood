@@ -1,0 +1,16 @@
+﻿@model BeerAndFood.Models.ViewModels.HomeIndexVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Öl och Mat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+</head>
+<body>
+    <h1>Öl och Mat</h1>
+    <label asp-for="Beername"></label>
+    <select asp-for="BeernameItem" asp-items="Model.Beername"></select>
+    <span asp-validation-for="BeernameItem"></span>
+
+</body>
+</html>
