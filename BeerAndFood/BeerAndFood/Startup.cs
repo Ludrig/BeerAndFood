@@ -25,6 +25,8 @@ namespace BeerAndFood
                 app.UseDeveloperExceptionPage();
             }
             //comment
+
+            //grymt / Elin
         }
     }
 }
