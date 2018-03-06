@@ -21,22 +21,7 @@ namespace BeerAndFood.Models
             this.context = context;
         }
 
-        //public HomeIndexVM GetAllBeer()
-        //{
-
-        //    var viewModel = new HomeIndexVM
-        //    {
-        //        Beername = new SelectListItem[]
-        //        {
-        //            new SelectListItem{ Value = "1", Text = "Carlsberg Hof"},
-        //            new SelectListItem{ Value = "2", Text = "Carlsberg Export"},
-        //            new SelectListItem{ Value = "3", Text = "Pripps"}
-
-        //        }
-
-        //    };
-        //        return viewModel;
-        //}
+      
         public HomeIndexVM GetAllBeers()
         {
 
@@ -65,6 +50,20 @@ namespace BeerAndFood.Models
                 //Genre = f != null ? f.Genre : ""
             };
         }
+        public FoodBoxVM GetFoodByBeerId(int beerId)
+        {
+            
+            var q = context.BeerAndFood.Select(b => b.IdBeer == beerId.CompareTo(b.IdFood));
+
+            //var c = context.BeerAndFood.Select(m => m.IdFood == q);
+            var f = context.Food.Select(m => m.Food1 == q.ToString());
+            return new FoodBoxVM
+            {
+                FoodType = q.ToString()
+            };
+
+        }
+        
     }
 }
 

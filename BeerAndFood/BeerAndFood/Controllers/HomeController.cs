@@ -19,7 +19,7 @@ namespace BeerAndFood.Controllers
         }
 
         //Repository repository = new Repository();
-        
+        [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
