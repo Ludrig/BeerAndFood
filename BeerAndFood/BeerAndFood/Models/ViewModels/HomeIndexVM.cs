@@ -13,11 +13,12 @@ namespace BeerAndFood.Models.ViewModels
         public SelectListItem[] Beername { get; set; }
         [Range(1, 7)]
         public int BeernameItem { get; set; }
-        //[Display(Name = "Typ")]
-        //public string Sort { get; set; }
-        //public int Pris { get; set; }
+        [Display(Name = "Typ")]
+        public string Sort { get; set; }
+        public int Pris { get; set; }
 
+        //[Display(Name = "Passar till")]
+        public string[] FoodType { get; set; }
 
-        
     }
 }

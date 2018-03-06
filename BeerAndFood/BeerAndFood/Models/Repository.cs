@@ -12,6 +12,10 @@ namespace BeerAndFood.Models
     {
         private readonly SouthWindContext context;
 
+        public Repository()
+        {
+        }
+
         public Repository(SouthWindContext context)
         {
             this.context = context;
