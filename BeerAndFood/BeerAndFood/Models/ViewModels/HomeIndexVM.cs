@@ -18,7 +18,7 @@ namespace BeerAndFood.Models.ViewModels
         public int Pris { get; set; }
 
         //[Display(Name = "Passar till")]
-        public string[] FoodType { get; set; }
+        public FoodBoxVM[] FoodType { get; set; }
 
     }
 }

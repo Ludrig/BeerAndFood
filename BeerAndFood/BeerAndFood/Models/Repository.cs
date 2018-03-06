@@ -37,8 +37,18 @@ namespace BeerAndFood.Models
                 Beername = query.ToArray()
             };
             return model;
+        }
 
+        public FoodBoxVM[] GetFoodByBeerId(int beerId)
+        {
+            var query = context.BeerAndFood.Select(b => b.IdBeer == beerId);
 
+            return new FoodBoxVM[]
+            {
+                //Title = f != null ? f.Title : "Invalid Id",
+                //Description = f != null ? f.Description : "",
+                //Genre = f != null ? f.Genre : ""
+            };
         }
         public FoodBoxVM GetFoodByBeerId(int beerId)
         {
