@@ -1,4 +1,5 @@
-﻿using BeerAndFood.Models.ViewModels;
+﻿using BeerAndFood.Models.Entities;
+using BeerAndFood.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,13 @@ namespace BeerAndFood.Models
 {
      public class Repository
     {
+        private readonly SouthWindContext context;
+
+        public Repository(SouthWindContext context)
+        {
+            this.context = context;
+        }
+
         public HomeIndexVM GetAllBeer()
         {
 
