@@ -12,6 +12,10 @@ namespace BeerAndFood.Models
     {
         private readonly SouthWindContext context;
 
+        public Repository()
+        {
+        }
+
         public Repository(SouthWindContext context)
         {
             this.context = context;
@@ -29,7 +33,6 @@ namespace BeerAndFood.Models
                 new SelectListItem{ Value = "3", Text = "Pripps"}
 
             }
-            
         };
             return viewModel;
         }
