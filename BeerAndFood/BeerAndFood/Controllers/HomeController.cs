@@ -23,6 +23,7 @@ namespace BeerAndFood.Controllers
         [Route("")]
         public IActionResult Index()
         {
+            var matLista = repository.GetFoodByBeerId(1);
             var viewModel = repository.GetAllBeers();
             return View(viewModel);
         }
