@@ -1,4 +1,12 @@
-﻿@model string[]
+﻿@model FoodBoxVM[]
+
 <div style="background-color:grey; padding:20px;">
-    <strong>@Model[0]</strong>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <strong>@item.FoodType</strong>
+            </li>
+        }
+    </ul>
 </div>
