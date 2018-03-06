@@ -11,12 +11,19 @@ namespace BeerAndFood.Controllers
 {
     public class HomeController : Controller
     {
-        Repository repository = new Repository();
+        private readonly Repository repository;
+
+        public HomeController(Repository repository)
+        {
+            this.repository = repository;
+        }
+
+        //Repository repository = new Repository();
         
         [Route("")]
         public IActionResult Index()
         {
-            var viewModel = repository.GetAllBeer();
+            var viewModel = repository.GetAllBeers();
             return View(viewModel);
         }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BeerAndFood.Models
 {
-     public class Repository
+    public class Repository
     {
         private readonly SouthWindContext context;
 
@@ -17,21 +17,40 @@ namespace BeerAndFood.Models
             this.context = context;
         }
 
-        public HomeIndexVM GetAllBeer()
+        //public HomeIndexVM GetAllBeer()
+        //{
+
+        //    var viewModel = new HomeIndexVM
+        //    {
+        //        Beername = new SelectListItem[]
+        //        {
+        //            new SelectListItem{ Value = "1", Text = "Carlsberg Hof"},
+        //            new SelectListItem{ Value = "2", Text = "Carlsberg Export"},
+        //            new SelectListItem{ Value = "3", Text = "Pripps"}
+
+        //        }
+
+        //    };
+        //        return viewModel;
+        //}
+        public HomeIndexVM GetAllBeers()
         {
 
-        var viewModel = new HomeIndexVM
-        {
-            Beername = new SelectListItem[]
+            var query = context.Beer.Select(c => new SelectListItem
             {
-                new SelectListItem{ Value = "1", Text = "Carlsberg Hof"},
-                new SelectListItem{ Value = "2", Text = "Carlsberg Export"},
-                new SelectListItem{ Value = "3", Text = "Pripps"}
+                Value = c.Id.ToString(),
+                Text = c.Beername,
+                Selected = c.Id.Equals(3)
+            });
 
-            }
-            
-        };
-            return viewModel;
+            var model = new HomeIndexVM
+            {
+                Beername = query.ToArray()
+            };
+            return model;
+
+
         }
     }
 }
+
