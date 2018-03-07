@@ -28,7 +28,7 @@ namespace BeerAndFood.Models
             var query = context.Beer.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),
-                Text = c.Beername,
+                Text = c.Beername +" Pris: " + c.Price + " kr" + " Typ: " + c.Sort,
                 Selected = c.Id.Equals(3)
             });
             var queryFood = context.Food.Select(c => new SelectListItem
@@ -47,8 +47,24 @@ namespace BeerAndFood.Models
             return model;
         }
 
-       
+        public void AddBeer(CreateBeerVM model)
+        {
+            
 
+              var newBeer = new Beer
+            {
+                Beername = model.Beer,
+                Price = model.Pris,
+                Sort = model.Sort,
+                
+            };
+            foreach (var foodId in model.selectedFoodIds)
+            {
+                newBeer.BeerAndFood.Add(new BeerAndFood.Models.Entities.BeerAndFood { IdFood = foodId });
+            }
+            context.Beer.Add(newBeer);
+            context.SaveChanges();
+        }
 
         public FoodBoxVM[] GetFoodByBeerId(int beerId)
         {
@@ -59,26 +75,21 @@ namespace BeerAndFood.Models
                 .ToArray();
 
             return query;
-            //{
-            //    //Title = f != null ? f.Title : "Invalid Id",
-            //    //Description = f != null ? f.Description : "",
-            //    //Genre = f != null ? f.Genre : ""
-            //};
+           
         }
-        //public FoodBoxVM GetFoodByBeerId(int beerId)
-        //{
-            
-        //    var q = context.BeerAndFood.Select(b => b.IdBeer == beerId.CompareTo(b.IdFood));
+        public FoodBoxVM[] GetBeerByFoodId(int foodId)
+        {
+            var query = context
+                .BeerAndFood
+                .Where(baf => baf.IdFood == foodId)
+                .Select(baf => new FoodBoxVM { FoodType = baf.IdBeerNavigation.Beername})
+                .ToArray();
 
-        //    //var c = context.BeerAndFood.Select(m => m.IdFood == q);
-        //    var f = context.Food.Select(m => m.Food1 == q.ToString());
-        //    return new FoodBoxVM
-        //    {
-        //        FoodType = q.ToString()
-        //    };
+            return query;
 
-        //}
-        
+        }
+
+
     }
 }
 

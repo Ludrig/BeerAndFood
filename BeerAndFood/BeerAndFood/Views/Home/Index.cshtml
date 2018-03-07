@@ -11,21 +11,26 @@
     <label asp-for="Beername"></label>
     <select asp-for="BeernameItem" asp-items="Model.Beername" id="beerValue"></select>
     <span asp-validation-for="BeernameItem"></span>
-    <input type="button" id="beerButton" value="Okej!" />
+    <input type="button" id="beerButton" value="Ok!" />
+    <input type="button" id="AddbeerButton" value="Add Beer!" />
+
     <br />
+    <div id="showBeer"></div>
     <br />
     <label asp-for="Foodname"></label>
     <select asp-for="FoodnameItem" asp-items="Model.Foodname" id="FoodValue"></select>
     <span asp-validation-for="FoodnameItem"></span>
-    <input type="button" id="foodButton" value="Okej!" />
-
-   
-
-
+    <input type="button" id="foodButton" value="Ok!" />
+    <br />
+    <div id="showFood"></div>
 
 
-    <h3>Mat</h3>
-    <div id="showBeer"></div>
+
+
+
+
+
+
 
 
 
@@ -36,17 +41,48 @@
     <script>
         $("#beerButton").click(function () {
             var beerId = $("#beerValue").val();
+            
+
             console.log(beerId);
             $.ajax({
                 url: "/home/FoodWithBeer/",
                 type: "GET",
-                data: { "id": beerId },
+                data: { "id": beerId  },
                 success: function (result) {
                     console.log(result);
 
                     $("#showBeer").html(result);
                 }
             });
+        });
+        $("#foodButton").click(function () {
+            var foodId = $("#FoodValue").val();
+            console.log(foodId);
+            $.ajax({
+                url: "/home/BeerWithFood/",
+                type: "GET",
+                data: { "id": foodId },
+                success: function (result) {
+                    console.log(result);
+
+                    $("#showFood").html(result);
+                }
+            });
+        });
+        $("#AddbeerButton").click(function () {
+            window.location.href = "/home/Create/";
+            //var foodId = $("#FoodValue").val();
+            //console.log(foodId);
+            //$.ajax({
+            //    url: "/home/BeerWithFood/",
+            //    type: "GET",
+            //    data: { "id": foodId },
+            //    success: function (result) {
+            //        console.log(result);
+
+            //        $("#showFood").html(result);
+            //    }
+            //});
         });
 
 

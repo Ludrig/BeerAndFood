@@ -1,0 +1,39 @@
+﻿@model BeerAndFood.Models.ViewModels.CreateBeerVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lägg till Öl</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+
+</head>
+<body>
+    <h1>Lägg till öl</h1>
+    <form asp-controller="home" asp-action="create">
+        <label asp-for="Beer"></label><br />
+        <input asp-for="Beer" /><br />
+        <label asp-for="Sort"></label><br />
+        <input asp-for="Sort" /><br />
+        <label asp-for="Pris"></label><br />
+        <input asp-for="Pris" /><br />
+
+        <h3>Passar till:</h3><br />
+        <input type="checkbox" name="selectedFoodIds" value="1" /> Nöt <br />
+        <input type="checkbox" name="selectedFoodIds" value="2" /> Fläsk <br />
+        <input type="checkbox" name="selectedFoodIds" value="3" /> Fågel <br />
+        <input type="checkbox" name="selectedFoodIds" value="4" /> Fisk <br />
+        <input type="checkbox" name="selectedFoodIds" value="5" /> Lamm <br />
+        <input type="checkbox" name="selectedFoodIds" value="6" /> Vilt <br />
+        <input type="checkbox" name="selectedFoodIds" value="7" /> Sällskapsdryck <br />
+        <input type="checkbox" name="selectedFoodIds" value="8" /> Vegetariskt <br />
+
+        <input type="submit" value="Add Beer" />
+    </form>
+   
+
+    
+
+
+
+</body>
+</html>

@@ -11,7 +11,7 @@ namespace BeerAndFood.Models.ViewModels
     {
         [Display(Name = "Öl")]
         public SelectListItem[] Beername { get; set; }
-        [Range(1, 7)]
+        
         public int BeernameItem { get; set; }
         [Display(Name = "Typ")]
         public string Sort { get; set; }
