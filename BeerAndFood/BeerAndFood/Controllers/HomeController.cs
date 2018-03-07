@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BeerAndFood.Models;
+using BeerAndFood.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -28,10 +29,11 @@ namespace BeerAndFood.Controllers
             return View(viewModel);
         }
 
-        public IActionResult FoodWithBeer(int beerId)
+
+        [HttpGet]
+       public IActionResult FoodWithBeer(int id)
         {
-            var matLista = repository.GetFoodByBeerId(beerId);
-            return Json(matLista);
+            return PartialView("_FoodBox", repository.GetFoodByBeerId(id));
         }
     }
 }
