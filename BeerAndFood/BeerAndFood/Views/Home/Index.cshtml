@@ -9,34 +9,37 @@
 <body>
     <h1>Öl och Mat</h1>
     <label asp-for="Beername"></label>
-    <select asp-for="BeernameItem" asp-items="Model.Beername" class="beerValue"></select>
+    <select asp-for="BeernameItem" asp-items="Model.Beername" id="beerValue"></select>
     <span asp-validation-for="BeernameItem"></span>
     <input type="button" id="beerButton" value="Okej!" />
 
     <h3>Mat</h3>
     @*@Html.Partial("_FoodBox", Model.FoodType)*@
     <div id="showBeer"></div>
-    
-   
+
+
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
 
-    <script >  $("#beerButton").click(function () {
-            var beerId = $(beerId).val();
-      console.log(beerId);
+    <script>
+        $("#beerButton").click(function () {
+            var beerId = $("#beerValue").val();
+            console.log(beerId);
             $.ajax({
-            url: "/",
-            type: "GET",
-            data: { "id": beerId  },
+                url: "/home/FoodWithBeer/",
+                type: "GET",
+                data: { "id": beerId },
                 success: function (result) {
-        $("").html(result);
+                    console.log(result);
+                    var htmlString = "<p>" + result.food1 + "</p>";
+                    $("#showBeer").html(htmlString);
                 }
             });
-        }); 
+        });
 
-     
+
     </script>
 
 </body>
