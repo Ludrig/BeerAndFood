@@ -17,6 +17,11 @@ namespace BeerAndFood.Models.ViewModels
         public string Sort { get; set; }
         public int Pris { get; set; }
 
+        [Display(Name = "Mat")]
+        public SelectListItem[] Foodname { get; set; }
+        [Range(1, 8)]
+        public int FoodnameItem { get; set; }
+
         //[Display(Name = "Passar till")]
         public FoodBoxVM[] FoodType { get; set; }
 

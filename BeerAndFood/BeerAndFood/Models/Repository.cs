@@ -31,13 +31,24 @@ namespace BeerAndFood.Models
                 Text = c.Beername,
                 Selected = c.Id.Equals(3)
             });
+            var queryFood = context.Food.Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Food1,
+                Selected = c.Id.Equals(3)
+            });
 
             var model = new HomeIndexVM
             {
-                Beername = query.ToArray()
+                Beername = query.ToArray(),
+                Foodname = queryFood.ToArray()
+                
             };
             return model;
         }
+
+       
+
 
         public FoodBoxVM[] GetFoodByBeerId(int beerId)
         {

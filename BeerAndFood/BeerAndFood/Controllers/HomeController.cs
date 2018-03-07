@@ -19,15 +19,20 @@ namespace BeerAndFood.Controllers
             this.repository = repository;
         }
 
-        //Repository repository = new Repository();
+       
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
             
             var viewModel = repository.GetAllBeers();
+            
+            
             return View(viewModel);
+            
         }
+       
+
 
 
         [HttpGet]

@@ -12,9 +12,19 @@
     <select asp-for="BeernameItem" asp-items="Model.Beername" id="beerValue"></select>
     <span asp-validation-for="BeernameItem"></span>
     <input type="button" id="beerButton" value="Okej!" />
+    <br />
+    <br />
+    <label asp-for="Foodname"></label>
+    <select asp-for="FoodnameItem" asp-items="Model.Foodname" id="FoodValue"></select>
+    <span asp-validation-for="FoodnameItem"></span>
+    <input type="button" id="foodButton" value="Okej!" />
+
+   
+
+
+
 
     <h3>Mat</h3>
-    @*@Html.Partial("_FoodBox", Model.FoodType)*@
     <div id="showBeer"></div>
 
 
@@ -33,7 +43,7 @@
                 data: { "id": beerId },
                 success: function (result) {
                     console.log(result);
-                   
+
                     $("#showBeer").html(result);
                 }
             });
